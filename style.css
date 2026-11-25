@@ -1,0 +1,70 @@
+/* ==============================================================
+   style.css — оформление страницы (ГОТОВО, не трогаем).
+   Саму игру рисует JavaScript на холсте <canvas>.
+   ============================================================== */
+* { box-sizing: border-box; }
+body {
+  margin: 0; min-height: 100vh;
+  background: radial-gradient(circle at 50% 0%, #1a0b2e 0%, #05050d 60%);
+  color: #e8e8ff; font-family: "Segoe UI", system-ui, sans-serif;
+  display: flex; justify-content: center; align-items: center;
+}
+.wrap { width: min(960px, 96vw); text-align: center; padding: 16px 0; }
+.logo {
+  margin: 0 0 10px; font-size: 34px; letter-spacing: .25em; font-weight: 900;
+  color: #00f0ff; text-shadow: 0 0 12px #00f0ff, 0 0 30px #00a0ff;
+}
+.logo span { color: #ff2e88; text-shadow: 0 0 12px #ff2e88, 0 0 30px #ff007a; }
+.hud {
+  display: flex; justify-content: space-between; gap: 12px;
+  padding: 10px 18px; margin-bottom: 10px;
+  border: 1px solid #2b2b55; border-radius: 12px; background: rgba(10,10,30,.7);
+  font-size: 18px; letter-spacing: .05em;
+}
+.hud b { color: #00f0ff; font-size: 22px; margin-left: 6px; text-shadow: 0 0 8px #00f0ff; }
+.stage { position: relative; }
+canvas {
+  display: block; width: 100%; height: auto;
+  border: 2px solid #00f0ff; border-radius: 14px; background: #05050d;
+  box-shadow: 0 0 25px rgba(0,240,255,.35), inset 0 0 40px rgba(0,240,255,.08);
+  cursor: crosshair;
+}
+.over {
+  position: absolute; inset: 0; border-radius: 14px;
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  background: rgba(5,5,13,.82); backdrop-filter: blur(3px);
+}
+.over[hidden] { display: none; }
+.over h2 {
+  margin: 0 0 10px; font-size: 64px; letter-spacing: .1em; color: #ff2e88;
+  text-shadow: 0 0 16px #ff2e88, 0 0 40px #ff007a;
+}
+.over p { font-size: 22px; margin: 6px 0; }
+.over b { color: #00f0ff; }
+#place { color: #ffe600; text-shadow: 0 0 10px #ffe600; min-height: 1.4em; }
+button {
+  margin-top: 16px; padding: 12px 30px; font: inherit; font-size: 20px; font-weight: 800;
+  color: #05050d; background: #00f0ff; border: 0; border-radius: 12px; cursor: pointer;
+  box-shadow: 0 0 18px #00f0ff;
+}
+button:hover { background: #7ff8ff; }
+.help { color: #8888b8; font-size: 14px; margin-top: 10px; }
+
+/* ---------- Прокачка: полоска опыта, экраны выбора, карточки ---------- */
+.xpbar { height: 8px; margin: -4px 0 10px; border-radius: 99px; background: #1a1a3a; overflow: hidden; }
+#xp { height: 100%; width: 0%; background: #ffe600; box-shadow: 0 0 10px #ffe600; transition: width .2s; }
+.over .title { font-size: 44px; color: #00f0ff; text-shadow: 0 0 16px #00f0ff; margin-bottom: 18px; }
+.over .title.gold { color: #ffe600; text-shadow: 0 0 16px #ffe600, 0 0 40px #ffb800; }
+.over .hint { font-size: 15px; color: #8888b8; }
+.cards { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; max-width: 92%; }
+.card {
+  width: 200px; min-height: 210px; margin: 0; padding: 18px 14px;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  background: rgba(15, 15, 40, .95); color: #e8e8ff; font-weight: 400;
+  border: 2px solid #00f0ff; border-radius: 16px; box-shadow: none;
+  transition: transform .12s, box-shadow .12s;
+}
+.card:hover { background: rgba(25, 25, 60, .95); transform: translateY(-6px) scale(1.03); box-shadow: 0 0 24px rgba(255,255,255,.25); }
+.card .icon { font-size: 52px; line-height: 1.1; }
+.card b { font-size: 20px; color: #fff; }
+.card small { font-size: 14px; color: #a8a8d8; line-height: 1.45; }

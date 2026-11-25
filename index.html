@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Неоновый рой</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+    <h1 class="logo">НЕОНОВЫЙ <span>РОЙ</span></h1>
+
+    <!-- Табло над игрой: сюда JavaScript пишет цифры -->
+    <div class="hud">
+      <span>❤ <b id="hp">5</b></span>
+      <span>Очки <b id="score">0</b></span>
+      <span>Волна <b id="wave">1</b></span>
+      <span>Уровень <b id="level">1</b></span>
+    </div>
+    <!-- Полоска опыта: JavaScript меняет её ширину -->
+    <div class="xpbar"><div id="xp"></div></div>
+
+    <div class="stage">
+      <!-- Холст: здесь рисуется вся игра -->
+      <canvas id="game" width="960" height="600"></canvas>
+
+      <!-- Экран «Игра окончена» -->
+      <div id="over" class="over" hidden>
+        <h2>GAME OVER</h2>
+        <p>Очки: <b id="final">0</b></p>
+        <p id="place"></p>
+        <button id="restart">Выбрать героя</button>
+        <p class="hint">R — заново тем же героем</p>
+      </div>
+
+      <!-- Экран выбора героя: карточки создаёт JavaScript -->
+      <div id="pick" class="over" hidden>
+        <h2 class="title">ВЫБЕРИ ГЕРОЯ</h2>
+        <div id="heroes" class="cards"></div>
+      </div>
+
+      <!-- Новый уровень: три карточки улучшений -->
+      <div id="levelup" class="over" hidden>
+        <h2 class="title gold">НОВЫЙ УРОВЕНЬ!</h2>
+        <div id="cards" class="cards"></div>
+      </div>
+    </div>
+
+    <p class="help">WASD или стрелки — ходить · мышь — целиться · зажать кнопку мыши — стрелять</p>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
